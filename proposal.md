@@ -13,13 +13,13 @@ World Weather is an app to see current weather from around the world. The defaul
 
 _**MVP User Stories**_
 - _As a user, I want to see the current local temperature and time._
-- _As a user, I would like to add other locations to see the current temperature there._
-- _As a user, I want to have the background show a random image from the currently selected location._
+- _As a user, I would like to add other locations to see the current temperature and time in those locations._
+- _As a user, I want the background to show a random image from the currently selected location._
 - _As a user, I want to be able to switch between Farenheit and Celsius._
-- _As a user, I would like the app to remember my locations and automatically display them all the next time I visit the site._
+- _As a user, I would like the app to remember my locations and display them the next time I visit the site._
+- _As a user, I would like to see a 3 day forecast for each location._
 
 _**Post MVP Stretch Goals**_
-- _As a user, I would like to see a 3 day forecast for each location._
 - _As a user, I would like the option to show additional information like precipitation, wind direction, wind speed, air quality, sunrise/sunset._
 - _As a user, I would like the color scheme to change based on background image._
 
