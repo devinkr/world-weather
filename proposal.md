@@ -21,6 +21,7 @@ _**MVP User Stories**_
 _**Post MVP Stretch Goals**_
 - _As a user, I would like to see a 3 day forecast for each location._
 - _As a user, I would like the option to show additional information like precipitation, wind direction, wind speed, air quality, sunrise/sunset._
+- _As a user, I would like the color scheme to change based on background image._
 
 ## API
 
