@@ -2,7 +2,7 @@
 
 ## Project Description
 
-World Weather is an app to see current weather from around the world. The default shows your local information but you can add multiple other locations and see them all at once.
+World Weather is a dashboard to see the current weather from around the world. The default shows your local information but you can add multiple other locations and see the local time and local weather for each at a glance. You can select one to see an expanded view with 3 day weather forecast.
 
 ## Wireframes
 
@@ -13,7 +13,7 @@ World Weather is an app to see current weather from around the world. The defaul
 
 _**MVP User Stories**_
 - _As a user, I want to see the current local temperature and time._
-- _As a user, I would like to add other locations to see the current temperature and time in those locations._
+- _As a user, I would like to add cities where my friends live and see the current temperature and time in those locations._
 - _As a user, I want the background to show a random image from the currently selected location._
 - _As a user, I want to be able to switch between Farenheit and Celsius._
 - _As a user, I would like the app to remember my locations and display them the next time I visit the site._
