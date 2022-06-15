@@ -7,7 +7,7 @@ World Weather is an app to see current weather from around the world. The defaul
 ## Wireframes
 
 ### Homepage
-
+![wireframe](https://github.com/devinkr/world-weather/blob/main/planning/wireframe.png)
 
 ### MVP User Stories
 
@@ -17,7 +17,7 @@ _**MVP User Stories**_
 - _As a user, I want the background to show a random image from the currently selected location._
 - _As a user, I want to be able to switch between Farenheit and Celsius._
 - _As a user, I would like the app to remember my locations and display them the next time I visit the site._
-- _As a user, I would like to see a 3 day forecast for each location._
+- _As a user, I would like to click on a location and have it expanded to show a 3 day forecast._
 
 _**Post MVP Stretch Goals**_
 - _As a user, I would like the option to show additional information like precipitation, wind direction, wind speed, air quality, sunrise/sunset._
