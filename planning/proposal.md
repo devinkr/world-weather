@@ -172,3 +172,11 @@ _**Post MVP Stretch Goals**_
 
 ## Component Hierarchy
 
+- App (State: locations useContext: tempUnits)
+  - Header
+  - WeatherDetails (State: locationData)
+    - ForecastItem (Props: forecastData)
+  - LocationList (Props: locations)
+    - LocationItem (State: locationData Props: location)
+  - AddLocationForm (State: formState, Props: locations)
+
