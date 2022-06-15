@@ -2,7 +2,7 @@
 
 ## Project Description
 
-World Weather is a dashboard to see the current weather from around the world. The default shows your local information but you can add multiple other locations and see the local time and local weather for each at a glance. You can select one to see an expanded view with 3 day weather forecast.
+World Weather is a dashboard to see the current weather from around the world. It uses geoloaction to show your local information and you can add multiple other locations and see the local time and weather for each at a glance. You can select any to see an expanded view with a 3 day weather forecast.
 
 ## Wireframes
 
