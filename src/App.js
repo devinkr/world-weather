@@ -18,6 +18,19 @@ function App() {
 	const timeInitial = new Date();
 	const [time, setTime] = useState(timeInitial);
 
+	function updateClock() {
+		const timeNow = new Date();
+		setTime(timeNow);
+	}
+
+	useEffect(() => {
+		const clock = setInterval(updateClock, 1000);
+
+		return () => {
+			clearInterval(clock);
+		};
+	}, []);
+
 	return (
 		<div className='App'>
 			<Header />

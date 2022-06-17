@@ -15,9 +15,7 @@ function WeatherDetails({ time, locations, currentView }) {
 
 	return (
 		<main className='weatherdetails'>
-			<h2>
-				{locationData.location.name}, {locationData.location.region}
-			</h2>
+			<h2>{locationData.location.name}</h2>
 			<div className='weatherdetails-date'>
 				{time.toLocaleDateString([], {
 					weekday: 'short',

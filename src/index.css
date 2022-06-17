@@ -44,13 +44,13 @@ h2 {
 }
 
 .weatherdetails-time {
-	font-size: 2.5em;
+	font-size: 2em;
 	margin-bottom: 0.5em;
 }
 
 .weatherdetails-temp {
 	font-size: 4em;
-	margin-bottom: 0.5em;
+	margin-bottom: 0.2em;
 }
 
 .forecast {
@@ -59,12 +59,13 @@ h2 {
 }
 
 .forecast img {
-	width: 64px;
+	width: 75px;
 }
 
 .forecast-day {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 }
 
 .locations {
