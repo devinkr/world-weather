@@ -13,15 +13,14 @@ html {
 	background-size: cover;
 }
 
-Header {
+header {
 	background-color: rgb(30, 30, 30, 0.7);
-	padding: 1em;
+	padding: 0.5em;
 	color: rgb(240, 240, 240);
 }
 
 h1 {
-	font-size: 2.5em;
-	max-width: 900px;
+	font-size: 2.2em;
 	text-align: center;
 }
 
@@ -30,7 +29,8 @@ h2 {
 	margin-bottom: 0.3em;
 }
 
-.weather-details {
+.weatherdetails,
+.locations-item {
 	padding: 1em 0.5em;
 	background-color: rgba(230, 230, 230, 0.9);
 	margin: 1em;
@@ -38,33 +38,108 @@ h2 {
 	border-radius: 10px;
 }
 
-p.date {
+.weatherdetails-date {
 	font-size: 1.2em;
 	margin-bottom: 1em;
 }
 
-p.time {
-	font-size: 2.5em;
+.weatherdetails-time {
+	font-size: 2em;
 	margin-bottom: 0.5em;
 }
 
-p.temp {
+.weatherdetails-temp {
 	font-size: 4em;
-	margin-bottom: 0.5em;
+	margin-bottom: 0.2em;
 }
+
 .forecast {
 	display: flex;
 	justify-content: space-around;
 }
 
+.forecast img {
+	width: 75px;
+}
+
 .forecast-day {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+}
+
+.locations {
+	display: flex;
+	flex-direction: column;
+	padding: 0 0.5em;
+}
+
+.locations-item {
+	padding: 0.5em 1em;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 0.5em 1em;
+	gap: 1em;
+}
+
+.locations-item-citytime {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 0.3em;
+}
+
+.locations-item-time {
+	font-size: 1.6em;
+}
+
+.locations-item-temp {
+	font-size: 2em;
+}
+
+.addlocation {
+	display: flex;
+	margin: 0.5em 1em;
+}
+
+.addlocation input {
+	margin: 0;
+	padding: 0.5em 0.5em;
+	flex-grow: 3;
+	font-size: 1.3em;
+}
+
+.addlocation-plus {
+	font-size: 3em;
+}
+
+/* https://www.w3.org/WAI/tutorials/forms/labels/#note-on-hiding-elements */
+
+.visuallyhidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
 }
 
 @media screen and (min-width: 768px) {
-	.weather-details {
-		max-width: 1000px;
+	.App {
+		display: flex;
+		flex-direction: column;
+	}
+	.weatherdetails {
+		width: 80%;
+		max-width: 900px;
 		margin: 2em auto;
+	}
+	.locations {
+		flex-direction: row;
+		flex-wrap: wrap;
 	}
 }

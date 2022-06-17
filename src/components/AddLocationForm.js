@@ -1,14 +1,18 @@
 function AddLocationForm(props) {
 	return (
-		<form className='add-location'>
-			<label htmlFor='location'>Enter City</label>
+		<form className='addlocation'>
+			<label htmlFor='location' className='visuallyhidden'>
+				Enter City or Zip Code
+			</label>
 			<input
 				type='text'
 				name='location'
 				id='location'
-				placeholder='Enter City'
+				placeholder='Enter City or zip'
 			/>
-			<button type='submit'>Submit</button>
+			<button type='submit' className='addlocation-plus'>
+				+
+			</button>
 		</form>
 	);
 }
