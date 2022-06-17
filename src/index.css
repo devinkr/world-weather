@@ -1,0 +1,70 @@
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+html {
+	font-family: 'Open Sans', monospace;
+}
+
+.App {
+	min-height: 100vh;
+	background: url('./denverbg.jpg') no-repeat center center fixed;
+	background-size: cover;
+}
+
+Header {
+	background-color: rgb(30, 30, 30, 0.7);
+	padding: 1em;
+	color: rgb(240, 240, 240);
+}
+
+h1 {
+	font-size: 2.5em;
+	max-width: 900px;
+	text-align: center;
+}
+
+h2 {
+	font-size: 2em;
+	margin-bottom: 0.3em;
+}
+
+.weather-details {
+	padding: 1em 0.5em;
+	background-color: rgba(230, 230, 230, 0.9);
+	margin: 1em;
+	text-align: center;
+	border-radius: 10px;
+}
+
+p.date {
+	font-size: 1.2em;
+	margin-bottom: 1em;
+}
+
+p.time {
+	font-size: 2.5em;
+	margin-bottom: 0.5em;
+}
+
+p.temp {
+	font-size: 4em;
+	margin-bottom: 0.5em;
+}
+.forecast {
+	display: flex;
+	justify-content: space-around;
+}
+
+.forecast-day {
+	display: flex;
+	flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+	.weather-details {
+		max-width: 1000px;
+		margin: 2em auto;
+	}
+}
