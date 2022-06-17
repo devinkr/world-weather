@@ -58,6 +58,10 @@ h2 {
 	justify-content: space-around;
 }
 
+.forecast img {
+	width: 64px;
+}
+
 .forecast-day {
 	display: flex;
 	flex-direction: column;
