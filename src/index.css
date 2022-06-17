@@ -13,15 +13,14 @@ html {
 	background-size: cover;
 }
 
-Header {
+header {
 	background-color: rgb(30, 30, 30, 0.7);
-	padding: 1em;
+	padding: 0.5em;
 	color: rgb(240, 240, 240);
 }
 
 h1 {
-	font-size: 2.5em;
-	max-width: 900px;
+	font-size: 2.2em;
 	text-align: center;
 }
 
@@ -125,8 +124,17 @@ h2 {
 }
 
 @media screen and (min-width: 768px) {
-	.weather-details {
-		max-width: 1000px;
+	.App {
+		display: flex;
+		flex-direction: column;
+	}
+	.weatherdetails {
+		width: 80%;
+		max-width: 900px;
 		margin: 2em auto;
+	}
+	.locations {
+		flex-direction: row;
+		flex-wrap: wrap;
 	}
 }
