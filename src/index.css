@@ -30,7 +30,8 @@ h2 {
 	margin-bottom: 0.3em;
 }
 
-.weather-details {
+.weatherdetails,
+.locations-item {
 	padding: 1em 0.5em;
 	background-color: rgba(230, 230, 230, 0.9);
 	margin: 1em;
@@ -38,20 +39,21 @@ h2 {
 	border-radius: 10px;
 }
 
-p.date {
+.weatherdetails-date {
 	font-size: 1.2em;
 	margin-bottom: 1em;
 }
 
-p.time {
+.weatherdetails-time {
 	font-size: 2.5em;
 	margin-bottom: 0.5em;
 }
 
-p.temp {
+.weatherdetails-temp {
 	font-size: 4em;
 	margin-bottom: 0.5em;
 }
+
 .forecast {
 	display: flex;
 	justify-content: space-around;
@@ -60,6 +62,66 @@ p.temp {
 .forecast-day {
 	display: flex;
 	flex-direction: column;
+}
+
+.locations {
+	display: flex;
+	flex-direction: column;
+	padding: 0 0.5em;
+}
+
+.locations-item {
+	padding: 0.5em 1em;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 0.5em 1em;
+	gap: 1em;
+}
+
+.locations-item-citytime {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 0.3em;
+}
+
+.locations-item-time {
+	font-size: 1.6em;
+}
+
+.locations-item-temp {
+	font-size: 2em;
+}
+
+.addlocation {
+	display: flex;
+	margin: 0.5em 1em;
+}
+
+.addlocation input {
+	margin: 0;
+	padding: 0.5em 0.5em;
+	flex-grow: 3;
+	font-size: 1.3em;
+}
+
+.addlocation-plus {
+	font-size: 3em;
+}
+
+/* https://www.w3.org/WAI/tutorials/forms/labels/#note-on-hiding-elements */
+
+.visuallyhidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
 }
 
 @media screen and (min-width: 768px) {

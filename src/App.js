@@ -1,6 +1,6 @@
 import Header from './components/Header';
 import WeatherDetails from './components/WeatherDetails';
-import LocationsList from './components/LocationsList';
+import LocationItem from './components/LocationItem';
 import AddLocationForm from './components/AddLocationForm';
 
 function App() {
@@ -8,8 +8,13 @@ function App() {
 		<div className='App'>
 			<Header />
 			<WeatherDetails />
-			<LocationsList />
-			<AddLocationForm />
+			<aside className='locations'>
+				<LocationItem />
+				<LocationItem />
+				<LocationItem />
+				<LocationItem />
+				<AddLocationForm />
+			</aside>
 		</div>
 	);
 }
