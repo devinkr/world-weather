@@ -13,7 +13,6 @@ function App() {
 	} */
 
 	const [locations, setLocations] = useState(locationsInitial);
-	const [weatherData, setWeatherData] = useState([]);
 	const [currentView, setCurrentView] = useState(0);
 	const timeInitial = new Date();
 	const [time, setTime] = useState(timeInitial);
