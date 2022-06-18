@@ -1,21 +1,13 @@
-import { useEffect, useState } from 'react';
 import ForecastDay from './ForecastDay';
-import getWeatherData from '../getWeatherData';
 
-function WeatherDetails({ time, locations, currentView }) {
-	const [locationData, setLocationData] = useState(null);
-
-	useEffect(() => {
-		getWeatherData(locations[currentView], setLocationData);
-	}, []);
-
-	if (!locationData) {
+function WeatherDetails({ time, currentView }) {
+	if (!currentView) {
 		return 'nope';
 	}
 
 	return (
 		<main className='weatherdetails'>
-			<h2>{locationData.location.name}</h2>
+			<h2>{currentView.location.name}</h2>
 			<div className='weatherdetails-date'>
 				{time.toLocaleDateString([], {
 					weekday: 'short',
@@ -28,15 +20,15 @@ function WeatherDetails({ time, locations, currentView }) {
 				{time.toLocaleTimeString([], {
 					hour: 'numeric',
 					minute: 'numeric',
-					timeZone: locationData.location.tz_id,
+					timeZone: currentView.location.tz_id,
 					timeZoneName: 'short',
 				})}
 			</div>
-			<div className='weatherdetails-temp'>{locationData.current.temp_f}°</div>
+			<div className='weatherdetails-temp'>{currentView.current.temp_f}°</div>
 			<div className='forecast'>
-				<ForecastDay forecastData={locationData.forecast.forecastday[0]} />
-				<ForecastDay forecastData={locationData.forecast.forecastday[1]} />
-				<ForecastDay forecastData={locationData.forecast.forecastday[2]} />
+				<ForecastDay forecastData={currentView.forecast.forecastday[0]} />
+				<ForecastDay forecastData={currentView.forecast.forecastday[1]} />
+				<ForecastDay forecastData={currentView.forecast.forecastday[2]} />
 			</div>
 		</main>
 	);

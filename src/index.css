@@ -83,6 +83,15 @@ h2 {
 	gap: 1em;
 }
 
+.locations-item:hover {
+	background-color: mediumseagreen;
+	cursor: pointer;
+}
+
+.locations-item:focus {
+	background-color: mediumseagreen;
+}
+
 .locations-item-citytime {
 	text-align: left;
 	display: flex;

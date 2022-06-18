@@ -3,17 +3,20 @@ import Header from './components/Header';
 import WeatherDetails from './components/WeatherDetails';
 import LocationItem from './components/LocationItem';
 import AddLocationForm from './components/AddLocationForm';
+import getWeatherData from './getWeatherData';
 
 function App() {
-	let locationsInitial = ['Mexico City', 'London', 'New York', 'Tokyo'];
-	/* 	if (!localStorage.getItem('locations')) {
+	let locationsInitial;
+	if (localStorage.getItem('locations')) {
 		locationsInitial = JSON.parse(localStorage.getItem('locations'));
 	} else {
-		locationsInitial = ['Mexico City', 'London', 'New York', 'Tokyo'];
-	} */
+		locationsInitial = [];
+	}
 
 	const [locations, setLocations] = useState(locationsInitial);
-	const [currentView, setCurrentView] = useState(0);
+
+	const [currentView, setCurrentView] = useState(null);
+
 	const timeInitial = new Date();
 	const [time, setTime] = useState(timeInitial);
 
@@ -24,6 +27,7 @@ function App() {
 
 	useEffect(() => {
 		const clock = setInterval(updateClock, 1000);
+		getWeatherData('auto:ip', setCurrentView);
 
 		return () => {
 			clearInterval(clock);
@@ -39,15 +43,16 @@ function App() {
 				currentView={currentView}
 			/>
 			<aside className='locations'>
-				{locations.map((location, index) => (
-					<LocationItem
-						time={time}
-						location={location}
-						key={index}
-						index={index}
-					/>
-				))}
-				<AddLocationForm />
+				{locations &&
+					locations.map((location, index) => (
+						<LocationItem
+							time={time}
+							location={location}
+							key={index}
+							setCurrentView={setCurrentView}
+						/>
+					))}
+				<AddLocationForm setLocations={setLocations} />
 			</aside>
 		</div>
 	);
