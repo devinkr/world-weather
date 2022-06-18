@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import getWeatherData from '../getWeatherData';
 
-function LocationItem({ time, location, index }) {
+function LocationItem({ time, location, setCurrentView }) {
 	const [locationData, setLocationData] = useState(null);
 
 	useEffect(() => {
@@ -13,7 +13,9 @@ function LocationItem({ time, location, index }) {
 	}
 
 	return (
-		<div className='locations-item'>
+		<div
+			className='locations-item'
+			onClick={() => setCurrentView(locationData)}>
 			<div className='locations-item-citytime'>
 				<div>{locationData.location.name}</div>
 				<div className='locations-item-time'>
