@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 function AddLocationForm({ locations, setLocations }) {
 	const [formState, setFormState] = useState('');
 
+	// Anytime locations change, save the location state to localStorage.
 	useEffect(() => {
 		if (locations) {
 			localStorage.setItem('locations', JSON.stringify(locations));

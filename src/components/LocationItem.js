@@ -10,12 +10,14 @@ function LocationItem({
 }) {
 	const [locationData, setLocationData] = useState(null);
 
+	// Remove clicked location from the locations state list.
 	function deleteLocation() {
 		const newLocations = locations.filter((element) => element !== location);
 		console.log(`NewLocations: ${newLocations} should not have ${location}`);
 		setLocations(newLocations);
 	}
 
+	// Re-render anytime the locations list changes. Otherwise I get a bug when I delete a location where it doesn't update the list.
 	useEffect(() => {
 		getWeatherData(location, setLocationData);
 	}, [locations]);
