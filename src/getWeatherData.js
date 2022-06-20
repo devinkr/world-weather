@@ -3,6 +3,7 @@ export default function getWeatherData(location, setLocationData) {
 	fetch(url, { crossDomain: true, mode: 'cors' })
 		.then((res) => res.json())
 		.then((data) => {
+			console.log(`Fetching: ${location}`);
 			setLocationData(data);
 		})
 		.catch((err) => console.error(err));

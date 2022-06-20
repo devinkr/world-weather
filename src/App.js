@@ -25,9 +25,16 @@ function App() {
 		setTime(timeNow);
 	}
 
+	function setLocal(data) {
+		if (locations[0] !== data.location.name) {
+			setLocations([data.location.name, ...locations]);
+		}
+		setCurrentView(data);
+	}
+
 	useEffect(() => {
 		const clock = setInterval(updateClock, 1000);
-		getWeatherData('auto:ip', setCurrentView);
+		getWeatherData('auto:ip', setLocal);
 
 		return () => {
 			clearInterval(clock);
@@ -50,9 +57,11 @@ function App() {
 							location={location}
 							key={index}
 							setCurrentView={setCurrentView}
+							locations={locations}
+							setLocations={setLocations}
 						/>
 					))}
-				<AddLocationForm setLocations={setLocations} />
+				<AddLocationForm locations={locations} setLocations={setLocations} />
 			</aside>
 		</div>
 	);

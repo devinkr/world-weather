@@ -73,19 +73,31 @@ h2 {
 	flex-direction: column;
 	padding: 0 0.5em;
 }
+.location {
+	display: flex;
+	flex-grow: 3;
+}
 
 .locations-item {
+	position: relative;
 	padding: 0.5em 1em;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	margin: 0.5em 1em;
 	gap: 1em;
+	flex-grow: 3;
 }
 
 .locations-item:hover {
 	background-color: mediumseagreen;
 	cursor: pointer;
+}
+
+.locations-item-delete {
+	font-size: 1em;
+	align-self: center;
+	padding: 0.5em;
 }
 
 .locations-item:focus {
@@ -106,6 +118,8 @@ h2 {
 
 .locations-item-temp {
 	font-size: 2em;
+	display: flex;
+	gap: 0.5em;
 }
 
 .addlocation {
