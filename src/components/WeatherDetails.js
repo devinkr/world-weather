@@ -14,6 +14,7 @@ function WeatherDetails({ time, currentView }) {
 					day: 'numeric',
 					month: 'long',
 					year: 'numeric',
+					timeZone: currentView.location.tz_id,
 				})}
 			</div>
 			<div className='weatherdetails-time'>
