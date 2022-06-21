@@ -13,7 +13,27 @@ function AddLocationForm({ weatherData, setWeatherData }) {
 		if (data?.error) {
 			setError(data.error);
 		} else {
-			setWeatherData([...weatherData, { name: data.location.name, data }]);
+			setWeatherData([
+				...weatherData,
+				{
+					name: data.location.name,
+					lat: data.location.lat,
+					lon: data.location.lon,
+					data,
+				},
+			]);
+			const locations = JSON.parse(localStorage.getItem('locations'));
+			localStorage.setItem(
+				'locations',
+				JSON.stringify([
+					...locations,
+					{
+						name: data.location.name,
+						lat: data.location.lat,
+						lon: data.location.lon,
+					},
+				])
+			);
 		}
 	}
 

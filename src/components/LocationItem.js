@@ -11,7 +11,10 @@ function LocationItem({
 	function updateWeatherData(data) {
 		const weatherDataCopy = [...weatherData];
 		weatherDataCopy.forEach((element) => {
-			if (element.name === data.location.name) {
+			if (
+				element.lat === data.location.lat &&
+				element.lon === data.location.lon
+			) {
 				element.data = data;
 			}
 			setWeatherData(weatherDataCopy);
@@ -25,7 +28,11 @@ function LocationItem({
 		weatherData.forEach((element, index) => {
 			if (index !== idx) {
 				newWeatherData.push(element);
-				locations.push(element.name);
+				locations.push({
+					name: element.name,
+					lat: element.lat,
+					lon: element.lon,
+				});
 			}
 		});
 		setWeatherData(newWeatherData);
@@ -33,7 +40,10 @@ function LocationItem({
 	}
 
 	useEffect(() => {
-		getWeatherData(weatherData[idx].name, updateWeatherData);
+		getWeatherData(
+			`${weatherData[idx].lat},${weatherData[idx].lon} `,
+			updateWeatherData
+		);
 	}, []);
 
 	if (!weatherData[idx]?.data) {

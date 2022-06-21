@@ -1,7 +1,6 @@
 import ForecastDay from './ForecastDay';
 
 function WeatherDetails({ time, weatherDetails }) {
-	console.log('WeatherDetails is rendering');
 	if (!weatherDetails) {
 		return;
 	}
