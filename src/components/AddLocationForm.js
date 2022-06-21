@@ -1,22 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import getWeatherData from '../getWeatherData';
 
-function AddLocationForm({ locations, setLocations }) {
+function AddLocationForm({ weatherData, setWeatherData }) {
 	const [formState, setFormState] = useState('');
-
-	// Anytime locations change, save the location state to localStorage.
-	useEffect(() => {
-		if (locations) {
-			localStorage.setItem('locations', JSON.stringify(locations));
-		}
-	}, [locations]);
 
 	function handleChange(event) {
 		setFormState(event.target.value);
 	}
 
+	function updateWeatherData(data) {
+		setWeatherData([...weatherData, { name: data.location.name, data }]);
+	}
+
 	function handleSubmit(event) {
 		event.preventDefault();
-		setLocations([...locations, formState]);
+		console.log(formState);
+		getWeatherData(formState, updateWeatherData);
 		setFormState('');
 	}
 
