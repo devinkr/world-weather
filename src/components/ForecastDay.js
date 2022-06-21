@@ -11,7 +11,7 @@ function ForecastDay({ forecastData }) {
 				alt={forecastData.day.condition.text}
 			/>
 			<span className='forecast-temp'>
-				{forecastData.day.maxtemp_f}° {forecastData.day.mintemp_f}°
+				{forecastData.day.maxtemp_f}°<br /> {forecastData.day.mintemp_f}°
 			</span>
 		</div>
 	);

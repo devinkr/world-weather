@@ -6,36 +6,92 @@ import AddLocationForm from './components/AddLocationForm';
 import getWeatherData from './getWeatherData';
 
 function App() {
-	let locationsInitial;
+	let locations;
+	// If there are saved locations get those from local storage and setLocations
 	if (localStorage.getItem('locations')) {
-		locationsInitial = JSON.parse(localStorage.getItem('locations'));
+		locations = JSON.parse(localStorage.getItem('locations'));
 	} else {
-		locationsInitial = [];
+		locations = [];
 	}
 
-	const [locations, setLocations] = useState(locationsInitial);
+	//Build weatherDataInitial from list of locations
+	const weatherDataInitial = [];
+	locations.forEach((element) =>
+		weatherDataInitial.push({
+			name: element.name,
+			lat: element.lat,
+			lon: element.lon,
+			data: null,
+		})
+	);
 
-	const [currentView, setCurrentView] = useState(null);
+	// State to hold all the weather Data
+	const [weatherData, setWeatherData] = useState(weatherDataInitial);
+	const [weatherDetails, setWeatherDetails] = useState(null);
 
+	// Error state
+	const [error, setError] = useState('');
+
+	// Time state used to track current time.
 	const timeInitial = new Date();
 	const [time, setTime] = useState(timeInitial);
 
+	// Keep the time updated to current time.
 	function updateClock() {
 		const timeNow = new Date();
 		setTime(timeNow);
 	}
 
+	// Callback used when App first mounts to set geolocation city to first item in weatherData list.
 	function setLocal(data) {
-		if (locations[0] !== data.location.name) {
-			setLocations([data.location.name, ...locations]);
+		if (data?.error) {
+			setError('Could not find your location.');
+		} else {
+			const newLoc = {
+				name: data.location.name,
+				lat: data.location.lat,
+				lon: data.location.lon,
+				data: data,
+			};
+			if (weatherData.length > 0) {
+				// Add the location only if it is not already in the list.
+				const idx = weatherData.findIndex(
+					(element) =>
+						element.lat === data.location.lat &&
+						element.lon === data.location.lon
+				);
+				// If it's not in the list then add it to the beginning
+				if (idx === -1) {
+					setWeatherData([newLoc, ...weatherData]);
+					// Add it to beginning of localStorage list as well.
+					localStorage.setItem(
+						'locations',
+						JSON.stringify([newLoc, ...locations])
+					);
+				}
+				// If it already is in the list, then update weather data
+				else {
+					const copyWeatherData = [...weatherData];
+					copyWeatherData[idx] = { ...copyWeatherData[idx], data: data };
+					setWeatherData(copyWeatherData);
+				}
+				// If there were no locations saved add the weatherData and save location in local storage.
+			} else {
+				setWeatherData([newLoc]);
+				localStorage.setItem('locations', JSON.stringify([newLoc]));
+			}
+			setWeatherDetails(data);
 		}
-		setCurrentView(data);
 	}
 
+	// When App first mounts
 	useEffect(() => {
-		const clock = setInterval(updateClock, 1000);
+		// Create an interval to update clock.
+		const clock = setInterval(updateClock, 10000);
+		// Get the weather data for geolocation and run setLocal callback
 		getWeatherData('auto:ip', setLocal);
 
+		// When App unmounts, clear the interval.
 		return () => {
 			clearInterval(clock);
 		};
@@ -44,24 +100,24 @@ function App() {
 	return (
 		<div className='App'>
 			<Header />
-			<WeatherDetails
-				time={time}
-				locations={locations}
-				currentView={currentView}
-			/>
+			<WeatherDetails time={time} weatherDetails={weatherDetails} />
 			<aside className='locations'>
-				{locations &&
-					locations.map((location, index) => (
+				{weatherData.length > 0 &&
+					weatherData.map((element, index) => (
 						<LocationItem
 							time={time}
-							location={location}
+							weatherData={weatherData}
+							setWeatherData={setWeatherData}
+							idx={index}
+							setWeatherDetails={setWeatherDetails}
 							key={index}
-							setCurrentView={setCurrentView}
-							locations={locations}
-							setLocations={setLocations}
 						/>
 					))}
-				<AddLocationForm locations={locations} setLocations={setLocations} />
+				<AddLocationForm
+					weatherData={weatherData}
+					setWeatherData={setWeatherData}
+				/>
+				<div className={error ? 'error' : null}>{error && error}</div>
 			</aside>
 		</div>
 	);

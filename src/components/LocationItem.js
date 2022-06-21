@@ -1,47 +1,72 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import getWeatherData from '../getWeatherData';
 
 function LocationItem({
 	time,
-	location,
-	setCurrentView,
-	locations,
-	setLocations,
+	weatherData,
+	setWeatherData,
+	idx,
+	setWeatherDetails,
 }) {
-	const [locationData, setLocationData] = useState(null);
-
+	function updateWeatherData(data) {
+		const weatherDataCopy = [...weatherData];
+		weatherDataCopy.forEach((element) => {
+			if (
+				element.lat === data.location.lat &&
+				element.lon === data.location.lon
+			) {
+				element.data = data;
+			}
+			setWeatherData(weatherDataCopy);
+		});
+	}
+	// Remove clicked location from the locations state list.
 	function deleteLocation() {
-		const newLocations = locations.filter((element) => element !== location);
-		console.log(`NewLocations: ${newLocations} should not have ${location}`);
-		setLocations(newLocations);
+		const newWeatherData = [];
+		const locations = [];
+		// Make new lists of weatherData and locations that don't have deleted location
+		weatherData.forEach((element, index) => {
+			if (index !== idx) {
+				newWeatherData.push(element);
+				locations.push({
+					name: element.name,
+					lat: element.lat,
+					lon: element.lon,
+				});
+			}
+		});
+		setWeatherData(newWeatherData);
+		localStorage.setItem('locations', JSON.stringify(locations));
 	}
 
 	useEffect(() => {
-		getWeatherData(location, setLocationData);
-	}, [locations]);
+		getWeatherData(
+			`${weatherData[idx].lat},${weatherData[idx].lon} `,
+			updateWeatherData
+		);
+	}, []);
 
-	if (!locationData) {
-		return 'nope';
+	if (!weatherData[idx]?.data) {
+		return;
 	}
 
+	const localData = weatherData[idx].data;
 	return (
 		<div className='location'>
 			<div
 				className='locations-item'
-				onClick={() => setCurrentView(locationData)}>
+				onClick={() => setWeatherDetails(localData)}>
 				<div className='locations-item-citytime'>
-					<div>{locationData.location.name}</div>
+					<div>{localData.location.name}</div>
 					<div className='locations-item-time'>
 						{time.toLocaleTimeString([], {
 							hour: 'numeric',
 							minute: 'numeric',
-							timeZone: locationData.location.tz_id,
+							timeZone: localData.location.tz_id,
 						})}
 					</div>
 				</div>
-				<div className='locations-item-temp'>
-					{locationData.current.temp_f}°
-				</div>
+				<div className='locations-item-temp'>{localData.current.temp_f}°</div>
 			</div>
 			<button className='locations-item-delete' onClick={deleteLocation}>
 				X

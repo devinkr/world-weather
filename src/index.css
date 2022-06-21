@@ -138,6 +138,13 @@ h2 {
 	font-size: 3em;
 }
 
+.error {
+	background-color: white;
+	color: red;
+	font-size: 1.2em;
+	padding: 0.5em;
+}
+
 /* https://www.w3.org/WAI/tutorials/forms/labels/#note-on-hiding-elements */
 
 .visuallyhidden {
