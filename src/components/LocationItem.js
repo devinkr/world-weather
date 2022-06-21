@@ -37,7 +37,7 @@ function LocationItem({
 	}, []);
 
 	if (!weatherData[idx]?.data) {
-		return 'nope';
+		return;
 	}
 
 	const localData = weatherData[idx].data;

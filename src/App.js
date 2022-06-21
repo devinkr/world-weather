@@ -25,8 +25,8 @@ function App() {
 	const [weatherData, setWeatherData] = useState(weatherDataInitial);
 	const [weatherDetails, setWeatherDetails] = useState(null);
 
-	// The index of the locale to be shown in weatherDetails
-	const [detailsIdx, setDetailsIdx] = useState(0);
+	// Error state
+	const [error, setError] = useState('');
 
 	// Time state used to track current time.
 	const timeInitial = new Date();
@@ -40,31 +40,35 @@ function App() {
 
 	// Callback used when App first mounts to set geolocation city to first item in weatherData list.
 	function setLocal(data) {
-		if (weatherData.length > 0) {
-			// Add the location only if it is not already in the list.
-			if (weatherData[0].name !== data.location.name) {
-				setWeatherData([
-					{ name: data.location.name, data: data },
-					...weatherData,
-				]);
-				// Add it to beginning of localStorage list as well.
-				localStorage.setItem(
-					'locations',
-					JSON.stringify([data.location.name, ...locations])
-				);
-			}
-			// If it already is first in the list, then update weather data
-			else {
-				const copyWeatherData = [...weatherData];
-				copyWeatherData[0] = { name: data.location.name, data: data };
-				setWeatherData(copyWeatherData);
-			}
-			// If there were no locations saved add the weatherData and save location in local storage.
+		if (data?.error) {
+			setError('Could not find your location.');
 		} else {
-			setWeatherData([{ name: data.location.name, data: data }]);
-			localStorage.setItem('locations', JSON.stringify([data.location.name]));
+			if (weatherData.length > 0) {
+				// Add the location only if it is not already in the list.
+				if (weatherData[0].name !== data.location.name) {
+					setWeatherData([
+						{ name: data.location.name, data: data },
+						...weatherData,
+					]);
+					// Add it to beginning of localStorage list as well.
+					localStorage.setItem(
+						'locations',
+						JSON.stringify([data.location.name, ...locations])
+					);
+				}
+				// If it already is first in the list, then update weather data
+				else {
+					const copyWeatherData = [...weatherData];
+					copyWeatherData[0] = { name: data.location.name, data: data };
+					setWeatherData(copyWeatherData);
+				}
+				// If there were no locations saved add the weatherData and save location in local storage.
+			} else {
+				setWeatherData([{ name: data.location.name, data: data }]);
+				localStorage.setItem('locations', JSON.stringify([data.location.name]));
+			}
+			setWeatherDetails(data);
 		}
-		setWeatherDetails(data);
 	}
 
 	// When App first mounts
@@ -100,6 +104,7 @@ function App() {
 					weatherData={weatherData}
 					setWeatherData={setWeatherData}
 				/>
+				<div className={error ? 'error' : null}>{error && error}</div>
 			</aside>
 		</div>
 	);
