@@ -9,7 +9,6 @@ function WeatherDetails({ time, weatherDetails }) {
 	useEffect(() => {
 		if (weatherDetails) {
 			const url = `https://api.unsplash.com/photos/random?client_id=${process.env.REACT_APP_UNSPLASHAPI_KEY}&query=${weatherDetails.location.name}&orientation=landscape`;
-			console.log(url);
 			fetch(url)
 				.then((res) => res.json())
 				.then((data) => {
@@ -65,7 +64,10 @@ function WeatherDetails({ time, weatherDetails }) {
 				</a>{' '}
 				{bgImage ? (
 					<span>
-						| Background image by <a href={bgImage.link}>{bgImage.artist}</a>
+						| Photo by <a href={bgImage.link}>{bgImage.artist}</a> on{' '}
+						<a href='https://unsplash.com/?utm_source=world_weather&utm_medium=referral'>
+							Unsplash
+						</a>
 					</span>
 				) : null}
 			</div>
