@@ -1,6 +1,27 @@
+import { useEffect, useState } from 'react';
 import ForecastDay from './ForecastDay';
 
 function WeatherDetails({ time, weatherDetails }) {
+	// State to hold background image information
+	const [bgImage, setBgImage] = useState(null);
+
+	//Set background image whenever WeatherDetails changes
+	useEffect(() => {
+		if (weatherDetails) {
+			const url = `https://api.unsplash.com/photos/random?client_id=${process.env.REACT_APP_UNSPLASHAPI_KEY}&query=${weatherDetails.location.name}&orientation=landscape`;
+			console.log(url);
+			fetch(url)
+				.then((res) => res.json())
+				.then((data) => {
+					document.body.style.backgroundImage = `url('${data.urls.regular}')`;
+					setBgImage({
+						link: data.links.html,
+						artist: data.user.name,
+					});
+				});
+		}
+	}, [weatherDetails]);
+
 	if (!weatherDetails) {
 		return;
 	}
@@ -36,6 +57,17 @@ function WeatherDetails({ time, weatherDetails }) {
 				<ForecastDay forecastData={weatherDetails.forecast.forecastday[0]} />
 				<ForecastDay forecastData={weatherDetails.forecast.forecastday[1]} />
 				<ForecastDay forecastData={weatherDetails.forecast.forecastday[2]} />
+			</div>
+			<div className='footer'>
+				&copy; 2022 Devin Raleigh | Powered by{' '}
+				<a href='https://www.weatherapi.com/' title='Free Weather API'>
+					WeatherAPI.com
+				</a>{' '}
+				{bgImage ? (
+					<span>
+						| Background image by <a href={bgImage.link}>{bgImage.artist}</a>
+					</span>
+				) : null}
 			</div>
 		</main>
 	);
