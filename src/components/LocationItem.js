@@ -40,10 +40,7 @@ function LocationItem({
 	}
 
 	useEffect(() => {
-		getWeatherData(
-			`${weatherData[idx].lat},${weatherData[idx].lon} `,
-			updateWeatherData
-		);
+		getWeatherData(weatherData[idx].name, updateWeatherData);
 	}, []);
 
 	if (!weatherData[idx]?.data) {
