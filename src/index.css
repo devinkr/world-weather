@@ -1,19 +1,29 @@
+html {
+	font-family: 'Open Sans', monospace;
+	min-height: 100vh;
+	box-sizing: border-box;
+}
 *,
 *:before,
 *:after {
-	box-sizing: border-box;
+	box-sizing: inherit;
 }
-html {
-	font-family: 'Open Sans', monospace;
+
+a {
+	color: inherit;
 }
 
 body {
-	background: url('./denverbg.jpg') no-repeat center center fixed;
+	position: relative;
+	min-height: 100vh;
+	background-color: rgb(200, 200, 200);
 	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
 }
 
 #root {
-	min-height: 100vh;
 	line-height: 1.3;
 }
 
@@ -35,7 +45,7 @@ h2 {
 .weatherdetails,
 .locations-item {
 	padding: 1em 0.5em;
-	background-color: rgba(230, 230, 230, 0.9);
+	background-color: rgba(230, 230, 230, 0.75);
 	margin: 1em;
 	text-align: center;
 	border-radius: 10px;
@@ -71,8 +81,8 @@ h2 {
 	align-items: center;
 }
 
-.forecast-temp {
-	text-align: left;
+.footer {
+	margin-top: 1em;
 }
 
 .locations {
@@ -151,10 +161,21 @@ h2 {
 }
 
 .error {
+	position: relative;
 	background-color: white;
 	color: red;
 	font-size: 1.2em;
 	padding: 0.5em;
+	width: 80%;
+	max-width: 600px;
+	margin: 1em auto;
+	border-radius: 5px;
+}
+
+.error-close {
+	position: absolute;
+	top: 2px;
+	right: 2px;
 }
 
 /* https://www.w3.org/WAI/tutorials/forms/labels/#note-on-hiding-elements */
@@ -216,6 +237,5 @@ h2 {
 	.addlocation {
 		max-width: 400px;
 		margin: 2em auto;
-		padding-bottom: 2em;
 	}
 }

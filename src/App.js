@@ -100,7 +100,7 @@ function App() {
 		<>
 			<Header />
 			<WeatherDetails time={time} weatherDetails={weatherDetails} />
-			<aside className='locations'>
+			<div className='locations'>
 				{weatherData.length > 0 &&
 					weatherData.map((element, index) => (
 						<LocationItem
@@ -112,13 +112,20 @@ function App() {
 							key={index}
 						/>
 					))}
-			</aside>
+			</div>
+			{error && (
+				<div className='error'>
+					{error}{' '}
+					<button className='error-close' onClick={() => setError('')}>
+						X
+					</button>
+				</div>
+			)}
 			<AddLocationForm
 				weatherData={weatherData}
 				setWeatherData={setWeatherData}
 				setError={setError}
 			/>
-			<div className={error ? 'error' : null}>{error && error}</div>
 		</>
 	);
 }
