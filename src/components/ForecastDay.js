@@ -5,14 +5,14 @@ function ForecastDay({ forecastData }) {
 
 	return (
 		<div className='forecast-day'>
-			<span className='day-of-week'>{day}</span>
+			<div className='day-of-week'>{day}</div>
 			<img
 				src={`https:${forecastData.day.condition.icon}`}
 				alt={forecastData.day.condition.text}
 			/>
-			<span className='forecast-temp'>
-				{forecastData.day.maxtemp_f}°<br /> {forecastData.day.mintemp_f}°
-			</span>
+			<div className='forecast-temp'>
+				{forecastData.day.maxtemp_f}° {forecastData.day.mintemp_f}°
+			</div>
 		</div>
 	);
 }

@@ -7,10 +7,14 @@ html {
 	font-family: 'Open Sans', monospace;
 }
 
-.App {
-	min-height: 100vh;
+body {
 	background: url('./denverbg.jpg') no-repeat center center fixed;
 	background-size: cover;
+}
+
+#root {
+	min-height: 100vh;
+	line-height: 1.3;
 }
 
 header {
@@ -26,7 +30,6 @@ h1 {
 
 h2 {
 	font-size: 2em;
-	margin-bottom: 0.3em;
 }
 
 .weatherdetails,
@@ -40,12 +43,11 @@ h2 {
 
 .weatherdetails-date {
 	font-size: 1.2em;
-	margin-bottom: 1em;
+	margin-bottom: 0.5em;
 }
 
 .weatherdetails-time {
 	font-size: 2em;
-	margin-bottom: 0.5em;
 }
 
 .weatherdetails-temp {
@@ -56,6 +58,7 @@ h2 {
 .forecast {
 	display: flex;
 	justify-content: space-around;
+	gap: 1em;
 }
 
 .forecast img {
@@ -68,25 +71,29 @@ h2 {
 	align-items: center;
 }
 
+.forecast-temp {
+	text-align: left;
+}
+
 .locations {
 	display: flex;
 	flex-direction: column;
-	padding: 0 0.5em;
+	margin: 1em;
 }
+
 .location {
 	display: flex;
-	flex-grow: 3;
+	gap: 0.5em;
 }
 
 .locations-item {
-	position: relative;
 	padding: 0.5em 1em;
+	margin: 0.5em 0;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin: 0.5em 1em;
-	gap: 1em;
 	flex-grow: 3;
+	gap: 2em;
 }
 
 .locations-item:hover {
@@ -95,9 +102,13 @@ h2 {
 }
 
 .locations-item-delete {
-	font-size: 1em;
+	font-size: 0.8em;
 	align-self: center;
-	padding: 0.5em;
+	padding: 0.3em;
+}
+
+.locations-item-delete:hover {
+	background-color: mediumseagreen;
 }
 
 .locations-item:focus {
@@ -129,13 +140,14 @@ h2 {
 
 .addlocation input {
 	margin: 0;
-	padding: 0.5em 0.5em;
+	padding: 0 0.5em;
+	font-size: 1.2em;
+	min-width: 0;
 	flex-grow: 3;
-	font-size: 1.3em;
 }
 
 .addlocation-plus {
-	font-size: 3em;
+	font-size: 2.5em;
 }
 
 .error {
@@ -158,18 +170,52 @@ h2 {
 	width: 1px;
 }
 
-@media screen and (min-width: 768px) {
-	.App {
-		display: flex;
-		flex-direction: column;
+@media screen and (min-width: 800px) {
+	h2 {
+		font-size: 3em;
 	}
 	.weatherdetails {
 		width: 80%;
-		max-width: 900px;
+		max-width: 800px;
 		margin: 2em auto;
+	}
+	.weatherdetails-heading {
+		display: flex;
+		justify-content: space-around;
+		margin-bottom: 3em;
+	}
+	.weatherdetails-temp {
+		align-self: flex-end;
 	}
 	.locations {
 		flex-direction: row;
 		flex-wrap: wrap;
+		gap: 3em;
+		width: 90%;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+	.locations-item-citytime {
+		font-size: 1.2em;
+	}
+	.locations-item-temp {
+		font-size: 2em;
+	}
+	.locations-item-time {
+		font-size: 1.5em;
+	}
+	.locations-item-delete {
+		font-size: 1.5em;
+	}
+	.forecast-day {
+		font-size: 2em;
+	}
+	.forecast img {
+		width: 120px;
+	}
+	.addlocation {
+		max-width: 400px;
+		margin: 2em auto;
+		padding-bottom: 2em;
 	}
 }
