@@ -95,7 +95,16 @@ function App() {
 		}, 10000);
 
 		// Get the weather data for geolocation by IP and run setLocal callback
-		getWeatherData('auto:ip', setLocal);
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition((position) => {
+				getWeatherData(
+					`${position.coords.latitude},${position.coords.longitude}`,
+					setLocal
+				);
+			});
+		} else {
+			getWeatherData('auto:ip', setLocal);
+		}
 
 		// When App unmounts, clear the interval.
 		return () => {
