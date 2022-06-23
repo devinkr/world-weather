@@ -13,7 +13,8 @@ function ForecastDay({ units, forecastData }) {
 				alt={forecastData.day.condition.text}
 			/>
 			<div className='forecast-temp'>
-				{forecastData.day[maxTempUnit]}° {forecastData.day[minTempUnit]}°
+				{Math.round(forecastData.day[maxTempUnit])}°{' '}
+				{Math.round(forecastData.day[minTempUnit])}°
 			</div>
 		</div>
 	);

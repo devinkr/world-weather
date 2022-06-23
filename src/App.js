@@ -1,6 +1,3 @@
-// Todo? Can I move state? Save BG image url into weatherData and/or localStorage to reduce API calls?
-// Will useReducer or useContext help me?
-
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import WeatherDetails from './components/WeatherDetails';
@@ -9,17 +6,17 @@ import AddLocationForm from './components/AddLocationForm';
 import getWeatherData from './getWeatherData';
 
 function App() {
-	let locations;
+	let worldWeatherLocal;
 	// If there are saved locations get those from local storage and setLocations
-	if (localStorage.getItem('locations')) {
-		locations = JSON.parse(localStorage.getItem('locations'));
+	if (localStorage.getItem('worldWeatherLocal')) {
+		worldWeatherLocal = JSON.parse(localStorage.getItem('worldWeatherLocal'));
 	} else {
-		locations = [];
+		worldWeatherLocal = { units: 'f', locations: [] };
 	}
 
 	//Build weatherDataInitial from list of locations
 	const weatherDataInitial = [];
-	locations.forEach((element) =>
+	worldWeatherLocal.locations.forEach((element) =>
 		weatherDataInitial.push({
 			name: element.name,
 			lat: element.lat,
@@ -31,7 +28,7 @@ function App() {
 	// State to hold all the weather Data
 	const [weatherData, setWeatherData] = useState(weatherDataInitial);
 	const [weatherDetails, setWeatherDetails] = useState(null);
-	const [units, setUnits] = useState('f');
+	const [units, setUnits] = useState(worldWeatherLocal.units);
 
 	// Error state
 	const [error, setError] = useState('');
@@ -61,10 +58,13 @@ function App() {
 				// If it's not in the list then add it to the beginning
 				if (idx === -1) {
 					setWeatherData([newLoc, ...weatherData]);
-					// Add it to beginning of localStorage list as well.
+					// Add it to beginning of localStorage locations list as well.
 					localStorage.setItem(
-						'locations',
-						JSON.stringify([newLoc, ...locations])
+						'worldWeatherLocal',
+						JSON.stringify({
+							...worldWeatherLocal,
+							locations: [newLoc, ...worldWeatherLocal.locations],
+						})
 					);
 				}
 				// If it already is in the list, then update weather data
@@ -76,7 +76,10 @@ function App() {
 				// If there were no locations saved, add the weatherData and save location in local storage.
 			} else {
 				setWeatherData([newLoc]);
-				localStorage.setItem('locations', JSON.stringify([newLoc]));
+				localStorage.setItem(
+					'worldWeatherLocal',
+					JSON.stringify({ ...worldWeatherLocal, locations: [newLoc] })
+				);
 			}
 			// Update the detail view with local weather data.
 			setWeatherDetails(data);

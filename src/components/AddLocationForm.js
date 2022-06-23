@@ -21,17 +21,22 @@ function AddLocationForm({ weatherData, setWeatherData, setError }) {
 					data,
 				},
 			]);
-			const locations = JSON.parse(localStorage.getItem('locations'));
+			const worldWeatherLocal = JSON.parse(
+				localStorage.getItem('worldWeatherLocal')
+			);
 			localStorage.setItem(
-				'locations',
-				JSON.stringify([
-					...locations,
-					{
-						name: data.location.name,
-						lat: data.location.lat,
-						lon: data.location.lon,
-					},
-				])
+				'worldWeatherLocal',
+				JSON.stringify({
+					...worldWeatherLocal,
+					locations: [
+						...worldWeatherLocal.locations,
+						{
+							name: data.location.name,
+							lat: data.location.lat,
+							lon: data.location.lon,
+						},
+					],
+				})
 			);
 		}
 	}
