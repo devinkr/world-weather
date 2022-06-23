@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import getWeatherData from '../getWeatherData';
 
 function LocationItem({
+	units,
 	time,
 	weatherData,
 	setWeatherData,
@@ -46,7 +47,7 @@ function LocationItem({
 	if (!weatherData[idx]?.data) {
 		return;
 	}
-
+	const tempUnit = `temp_${units}`;
 	const localData = weatherData[idx].data;
 	return (
 		<div className='location'>
@@ -63,9 +64,14 @@ function LocationItem({
 						})}
 					</div>
 				</div>
-				<div className='locations-item-temp'>{localData.current.temp_f}°</div>
+				<div className='locations-item-temp'>
+					{localData.current[tempUnit]}°
+				</div>
 			</div>
-			<button className='locations-item-delete' onClick={deleteLocation}>
+			<button
+				aria-label={`Remove ${localData.location.name}`}
+				className='locations-item-delete'
+				onClick={deleteLocation}>
 				X
 			</button>
 		</div>

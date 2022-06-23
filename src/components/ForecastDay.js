@@ -1,7 +1,9 @@
-function ForecastDay({ forecastData }) {
+function ForecastDay({ units, forecastData }) {
 	const date = new Date(forecastData.date_epoch * 1000);
 	const weekdays = ['SUN', 'MON', 'TUE', 'WED', 'THUR', 'FRI', 'SAT'];
 	const day = weekdays[date.getUTCDay()];
+	const maxTempUnit = `maxtemp_${units}`;
+	const minTempUnit = `mintemp_${units}`;
 
 	return (
 		<div className='forecast-day'>
@@ -11,7 +13,7 @@ function ForecastDay({ forecastData }) {
 				alt={forecastData.day.condition.text}
 			/>
 			<div className='forecast-temp'>
-				{forecastData.day.maxtemp_f}° {forecastData.day.mintemp_f}°
+				{forecastData.day[maxTempUnit]}° {forecastData.day[minTempUnit]}°
 			</div>
 		</div>
 	);
