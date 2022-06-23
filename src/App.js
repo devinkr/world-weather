@@ -1,6 +1,5 @@
-// Todo? Can I move state? Save BG image into weatherData and/or localStorage to reduce API calls?
+// Todo? Can I move state? Save BG image url into weatherData and/or localStorage to reduce API calls?
 // Will useReducer or useContext help me?
-// Add Fahrenheit/Celsius
 
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
