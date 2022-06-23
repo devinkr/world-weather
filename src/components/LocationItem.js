@@ -65,7 +65,7 @@ function LocationItem({
 					</div>
 				</div>
 				<div className='locations-item-temp'>
-					{localData.current[tempUnit]}°
+					{Math.round(localData.current[tempUnit])}°
 				</div>
 			</div>
 			<button

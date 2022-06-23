@@ -50,7 +50,7 @@ function WeatherDetails({ units, time, weatherDetails }) {
 				</div>
 
 				<div className='weatherdetails-temp'>
-					{weatherDetails.current[tempUnit]}°{units.toUpperCase()}
+					{Math.round(weatherDetails.current[tempUnit])}°{units.toUpperCase()}
 				</div>
 			</div>
 			<div className='forecast'>
