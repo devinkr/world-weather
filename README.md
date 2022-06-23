@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# World Weather
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![World Weather Screenshot](https://github.com/devinkr/world-weather/blob/main/public/assets/world-weather.jpg?raw=true)
 
-## Available Scripts
+## Description
+I have friends and family spread all over the world . I am always curious what the weather is like there and I can never remember the time difference. World Weather is a weather dashboard that allows you to see the local time and weather for any city in the world. The default view uses geolocation to show your local weather forecast. You can add additional cities and see at a glance the current time and temperature in that city. Click on any city to see a 3 day weather forecast.
 
-In the project directory, you can run:
+## Technologies used
+  - React
+  - Javascript
+  - REST APIs
+  - JSX
+  - HTML
+  - CSS
 
-### `npm start`
+  
+## Instalation instructions
+Visit [weather.dkr.im](https://weather.dkr.im) or clone this repo and run `npm install` to install the dependencies. You will need your own API keys for [WeatherAPI](https://www.weatherapi.com/) and [Unsplash](https://unsplash.com/) and save them to `.env.local` located in the root folder.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## MVP User Stories
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+_**MVP User Stories**_
+- _As a user, I want to see the current local temperature and time._
+- _As a user, I would like to add cities where my friends live and see the current temperature and time in those locations._
+- _As a user, I would like to click on a location and have it expanded to show a 3 day forecast._
 
-### `npm test`
+_**Post MVP Stretch Goals**_
+- _As a user, I would like the app to remember my locations and display them the next time I visit the site._
+- _As a user, I want the background to show a random image from the currently selected location._
+- _As a user, I want to be able to switch between Fahrenheit and Celsius._
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Wireframes
+![World Weather](https://github.com/devinkr/world-weather/blob/main/public/assets/wireframe.png?raw=true)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Major Hurdles
+My major hurdle is always design. On this project I was much more comfortable with mobile first design to create a clean responsive look on various mobile devices but it was challenging to convert that to a design that also looked good on larger desktop resolutions. I played around with the idea of using CSS Grid but in the end it was unecessary and I stuck with Flex.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Another problem I ran into were issues with CORS. Everything worked perfectly on my local machine and even worked once I deployed my app to netlify but I would run into intermitent CORS errors. I was able to find the correct settings to add to a .toml file for netify that resolved the issue.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Resources
+   - Iconixar from [Flaticon](https://www.flaticon.com/free-icons/weather) for the Weather Favicon.
+   - [WeatherAPI Documentation](https://www.weatherapi.com/docs/)
+   - [Unsplash Documentation](https://unsplash.com/documentation)
