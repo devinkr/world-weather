@@ -14,7 +14,7 @@ I have friends and family spread all over the world . I am always curious what t
   - CSS
 
   
-## Instalation instructions
+## Installation instructions
 Visit [weather.dkr.im](https://weather.dkr.im) or clone this repo and run `npm install` to install the dependencies. You will need your own API keys for [WeatherAPI](https://www.weatherapi.com/) and [Unsplash](https://unsplash.com/) and save them to `.env.local` located in the root folder.
 
 ## MVP User Stories
