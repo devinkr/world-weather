@@ -8,7 +8,7 @@ I have friends and family spread all over the world . I am always curious what t
 ## Technologies used
   - React
   - Javascript
-  - REST APIs
+  - APIs - WeatherAPI.com, Unsplash, browser Window.localStorage and Navigator.geolocation 
   - JSX
   - HTML
   - CSS
