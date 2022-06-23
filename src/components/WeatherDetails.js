@@ -9,7 +9,7 @@ function WeatherDetails({ units, time, weatherDetails }) {
 	useEffect(() => {
 		if (weatherDetails) {
 			const url = `https://api.unsplash.com/photos/random?client_id=${process.env.REACT_APP_UNSPLASHAPI_KEY}&query=${weatherDetails.location.name}&orientation=landscape`;
-			/* 			fetch(url)
+			fetch(url)
 				.then((res) => res.json())
 				.then((data) => {
 					document.body.style.backgroundImage = `url('${data.urls.regular}')`;
@@ -17,7 +17,7 @@ function WeatherDetails({ units, time, weatherDetails }) {
 						link: data.user.links.html,
 						artist: data.user.name,
 					});
-				}); */
+				});
 		}
 	}, [weatherDetails]);
 
