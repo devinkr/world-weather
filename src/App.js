@@ -96,12 +96,19 @@ function App() {
 
 		// Get the weather data for geolocation by IP and run setLocal callback
 		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition((position) => {
-				getWeatherData(
-					`${position.coords.latitude},${position.coords.longitude}`,
-					setLocal
-				);
-			});
+			navigator.geolocation.getCurrentPosition(
+				// On sucess
+				(position) => {
+					getWeatherData(
+						`${position.coords.latitude},${position.coords.longitude}`,
+						setLocal
+					);
+				},
+				// On Error
+				() => {
+					getWeatherData('auto:ip', setLocal);
+				}
+			);
 		} else {
 			getWeatherData('auto:ip', setLocal);
 		}
