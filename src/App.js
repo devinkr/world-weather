@@ -1,3 +1,6 @@
+// Todo? Can I move state? Save BG image url into weatherData and/or localStorage to reduce API calls?
+// Will useReducer or useContext help me?
+
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import WeatherDetails from './components/WeatherDetails';
@@ -28,6 +31,7 @@ function App() {
 	// State to hold all the weather Data
 	const [weatherData, setWeatherData] = useState(weatherDataInitial);
 	const [weatherDetails, setWeatherDetails] = useState(null);
+	const [units, setUnits] = useState('f');
 
 	// Error state
 	const [error, setError] = useState('');
@@ -98,12 +102,17 @@ function App() {
 
 	return (
 		<>
-			<Header />
-			<WeatherDetails time={time} weatherDetails={weatherDetails} />
+			<Header units={units} setUnits={setUnits} />
+			<WeatherDetails
+				units={units}
+				time={time}
+				weatherDetails={weatherDetails}
+			/>
 			<div className='locations'>
 				{weatherData.length > 0 &&
 					weatherData.map((element, index) => (
 						<LocationItem
+							units={units}
 							time={time}
 							weatherData={weatherData}
 							setWeatherData={setWeatherData}
@@ -116,7 +125,10 @@ function App() {
 			{error && (
 				<div className='error'>
 					{error}{' '}
-					<button className='error-close' onClick={() => setError('')}>
+					<button
+						className='error-close'
+						aria-label='Clear error'
+						onClick={() => setError('')}>
 						X
 					</button>
 				</div>
