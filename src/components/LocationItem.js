@@ -37,7 +37,16 @@ function LocationItem({
 			}
 		});
 		setWeatherData(newWeatherData);
-		localStorage.setItem('locations', JSON.stringify(locations));
+		const worldWeatherLocal = JSON.parse(
+			localStorage.getItem('worldWeatherLocal')
+		);
+		localStorage.setItem(
+			'worldWeatherLocal',
+			JSON.stringify({
+				...worldWeatherLocal,
+				locations: locations,
+			})
+		);
 	}
 
 	useEffect(() => {
