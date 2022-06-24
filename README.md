@@ -38,6 +38,8 @@ My major hurdle is always design. On this project I was much more comfortable wi
 
 Another problem I ran into were issues with CORS. Everything worked perfectly on my local machine and even worked once I deployed my app to netlify but I would run into intermitent CORS errors. I was able to find the correct settings to add to a .toml file for netify that resolved the issue.
 
+A hurdle I didn't really overcome was better separation of concerns and cleaner code. I think I could have structured my components and state in a better way to better separate concerns. I could have made a time component that I could have reused everywhere it shows the time.
+
 ## Resources
    - Iconixar from [Flaticon](https://www.flaticon.com/free-icons/weather) for the Weather Favicon.
    - [WeatherAPI Documentation](https://www.weatherapi.com/docs/)
