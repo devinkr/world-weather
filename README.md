@@ -42,3 +42,5 @@ Another problem I ran into were issues with CORS. Everything worked perfectly on
    - Iconixar from [Flaticon](https://www.flaticon.com/free-icons/weather) for the Weather Favicon.
    - [WeatherAPI Documentation](https://www.weatherapi.com/docs/)
    - [Unsplash Documentation](https://unsplash.com/documentation)
+   - [MDN Documentation](https://developer.mozilla.org/en-US/)
+   - The amazing instructors at General Assembly and all the great lesson repos on React.
