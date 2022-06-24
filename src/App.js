@@ -16,14 +16,16 @@ function App() {
 
 	//Build weatherDataInitial from list of locations
 	const weatherDataInitial = [];
-	worldWeatherLocal.locations.forEach((element) =>
-		weatherDataInitial.push({
-			name: element.name,
-			lat: element.lat,
-			lon: element.lon,
-			data: null,
-		})
-	);
+	if (worldWeatherLocal.locations.length > 0) {
+		worldWeatherLocal.locations.forEach((element) =>
+			weatherDataInitial.push({
+				name: element.name,
+				lat: element.lat,
+				lon: element.lon,
+				data: null,
+			})
+		);
+	}
 
 	// State to hold all the weather Data
 	const [weatherData, setWeatherData] = useState(weatherDataInitial);
