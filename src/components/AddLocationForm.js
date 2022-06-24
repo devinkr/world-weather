@@ -4,10 +4,6 @@ import getWeatherData from '../getWeatherData';
 function AddLocationForm({ weatherData, setWeatherData, setError }) {
 	const [formState, setFormState] = useState('');
 
-	function handleChange(event) {
-		setFormState(event.target.value);
-	}
-
 	function updateWeatherData(data) {
 		if (data?.error) {
 			setError(data.error);
@@ -39,6 +35,10 @@ function AddLocationForm({ weatherData, setWeatherData, setError }) {
 				})
 			);
 		}
+	}
+
+	function handleChange(event) {
+		setFormState(event.target.value);
 	}
 
 	function handleSubmit(event) {
