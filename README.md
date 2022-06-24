@@ -3,7 +3,7 @@
 ![World Weather Screenshot](https://github.com/devinkr/world-weather/blob/main/public/assets/world-weather.jpg?raw=true)
 
 ## Description
-I have friends and family spread all over the world . I am always curious what the weather is like there and I can never remember the time difference. World Weather is a weather dashboard that allows you to see the local time and weather for any city in the world. The default view uses geolocation to show your local weather forecast. You can add additional cities and see at a glance the current time and temperature in that city. Click on any city to see a 3 day weather forecast.
+I have friends and family spread all over the world . I am always curious what the weather is like there and I can never remember the time difference. [World Weather](https://weather.dkr.im) is a weather dashboard that allows you to see the local time and weather for any city in the world. The default view uses geolocation to show your local weather forecast. You can add additional cities and see at a glance the current time and temperature in that city. Click on any city to see a 3 day weather forecast.
 
 ## Technologies used
   - React
